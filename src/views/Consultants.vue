@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <home-component />
+    <consultants-component />
   </div>
 </template>
 
 <script>
-import HomeComponent from "@/components/Consultants";
+import ConsultantsComponent from "@/components/Consultants";
 
 export default {
   name: "Home",
   components: {
-    HomeComponent,
+    ConsultantsComponent,
   },
 };
 </script>
