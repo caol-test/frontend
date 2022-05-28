@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">Welcome to CAOL Test</h1>
+        <h2>Welcome to CAOL Test</h2>
       </v-col>
     </v-row>
 
