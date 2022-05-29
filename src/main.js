@@ -3,8 +3,25 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
+import axios from "axios";
 
 Vue.config.productionTip = false;
+
+const axiosConfig = {
+  baseURL: "http://localhost:8085/api/",
+  timeout: 30000,
+};
+
+Vue.prototype.$axios = axios.create(axiosConfig);
+Vue.prototype.$axios.interceptors.request.use(function (config) {
+  const token = store.getters.getJwt;
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
 
 new Vue({
   router,
