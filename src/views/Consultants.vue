@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ConsultantsComponent from "@/components/Consultants";
+import ConsultantsComponent from "@/components/consultants/Home";
 
 export default {
   name: "Home",

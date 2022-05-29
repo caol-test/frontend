@@ -18,7 +18,7 @@
 import Chart from "@/components/charts/GraphChart";
 
 export default {
-  name: "Consultants",
+  name: "ConsultantsGraph",
 
   data: () => ({}),
   components: { Chart },
