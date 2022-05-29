@@ -13,6 +13,7 @@ const axiosConfig = {
 };
 
 Vue.prototype.$axios = axios.create(axiosConfig);
+
 Vue.prototype.$axios.interceptors.request.use(function (config) {
   const token = store.getters.getJwt;
 
