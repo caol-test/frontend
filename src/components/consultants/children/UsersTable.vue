@@ -8,6 +8,7 @@
     :loading="loadingConsultants"
     :headers="headers"
     :items="consultants"
+    @input="$root.$emit('select-users', selected)"
   >
   </v-data-table>
 </template>
