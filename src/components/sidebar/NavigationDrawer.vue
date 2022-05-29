@@ -1,5 +1,11 @@
 <template>
-  <v-navigation-drawer dark absolute permanent expand-on-hover color="primary">
+  <v-navigation-drawer
+    dark
+    absolute
+    permanent
+    expand-on-hover
+    :color="$store.getters.getThemeColor"
+  >
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="text-h6"> MENU ITEMS </v-list-item-title>

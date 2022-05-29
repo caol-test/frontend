@@ -7,7 +7,12 @@
     </v-row>
 
     <v-row class="text-center">
-      <v-col class="mb-4"> </v-col>
+      <v-col class="mb-4">
+        <v-btn to="/consultants" color="info">
+          <v-icon class="mr-2">mdi-account-group</v-icon>
+          Let's do this
+        </v-btn>
+      </v-col>
     </v-row>
   </v-container>
 </template>
