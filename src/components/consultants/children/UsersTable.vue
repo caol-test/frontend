@@ -35,7 +35,7 @@ export default {
   methods: {
     async getJwt() {
       let response = await this.$axios({ url: "jwt" });
-      let responseData = this.getResponseData(response);
+      let responseData = this.$axios.getResponseData(response);
 
       this.$store.commit("setJwt", responseData.jwt);
     },
@@ -45,7 +45,7 @@ export default {
       this.$axios({ url: "users/consultants" })
         .then((response) => {
           this.loadingConsultants = false;
-          this.consultants = this.getResponseData(response);
+          this.consultants = this.$axios.getResponseData(response);
         })
         .catch((error) => {
           this.loadingConsultants = false;
@@ -53,10 +53,6 @@ export default {
 
           console.log(error);
         });
-    },
-    getResponseData(response) {
-      let { data: responseData } = response;
-      return responseData.data;
     },
   },
   mounted() {
