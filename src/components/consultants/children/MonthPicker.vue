@@ -35,11 +35,12 @@ export default {
       .toISOString()
       .substr(0, 7),
   }),
-  props: ["label"],
+  props: ["label", "dateType"],
   methods: {
     emitSelectedDateEvent() {
       this.$refs.menu.save(this.date);
-      this.$emit("select-date", this.date);
+      this.$root.$emit(this.dateType, this.date);
+      this.menu = false;
     },
   },
 };
