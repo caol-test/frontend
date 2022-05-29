@@ -1,12 +1,13 @@
 <template>
   <v-container>
     <v-navigation-drawer
-      :color="$store.getters.getThemeColor"
+      dark
       absolute
+      permanent
+      right
+      :color="$store.getters.getThemeColor"
       v-model="settingsDrawer"
       :mini-variant.sync="settingsDrawerMini"
-      right
-      dark
     >
       <v-list-item class="px-2">
         <v-list-item-avatar>
