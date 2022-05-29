@@ -5,8 +5,8 @@
       absolute
       permanent
       right
-      :color="$store.getters.getThemeColor"
       v-model="settingsDrawer"
+      :color="$store.getters.getThemeColor"
       :mini-variant.sync="settingsDrawerMini"
     >
       <v-list-item class="px-2">
