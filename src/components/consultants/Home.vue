@@ -60,9 +60,9 @@
 </template>
 
 <script>
-import UsersTable from "@/components/consultants/UsersTable";
+import UsersTable from "@/components/consultants/children/UsersTable";
 import Chart from "@/components/charts/GraphChart";
-import MonthPicker from "@/components/consultants/MonthPicker";
+import MonthPicker from "@/components/consultants/children/MonthPicker";
 
 export default {
   name: "ConsultantsHome",
