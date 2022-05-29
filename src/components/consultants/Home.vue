@@ -12,7 +12,7 @@
       <v-col class="mb-4">
         <users-table />
 
-        <v-btn class="mt-5">
+        <v-btn color="warning" class="mt-5" :disabled="flagDisableVisualizeBtn">
           <v-icon class="mr-2">mdi-chart-bell-curve-cumulative</v-icon>
           Visualize Data
         </v-btn>
@@ -41,6 +41,7 @@ export default {
     startMonth: null,
     endMonth: null,
     graphType: null,
+    selectedUsers: [],
   }),
   components: { UsersTable, Chart, SettingsNavDrawer },
   methods: {
@@ -52,12 +53,25 @@ export default {
       }
     },
   },
+  computed: {
+    flagDisableVisualizeBtn() {
+      return (
+        this.selectedUsers.length === 0 || !this.startMonth || !this.endMonth
+      );
+    },
+  },
   mounted() {
     this.$root.$on("start", (data) => {
       this.setMonth("start", data);
     });
+
     this.$root.$on("end", (data) => {
       this.setMonth("end", data);
+    });
+
+    this.$root.$on("select-users", (data) => {
+      this.selectedUsers = data;
+      console.log(data);
     });
   },
 };
