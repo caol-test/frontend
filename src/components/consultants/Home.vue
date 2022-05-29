@@ -11,10 +11,43 @@
     <v-row class="text-center">
       <v-col class="mb-4">
         <users-table />
+      </v-col>
+    </v-row>
 
-        <v-btn color="warning" class="mt-5" :disabled="flagDisableVisualizeBtn">
-          <v-icon class="mr-2">mdi-chart-bell-curve-cumulative</v-icon>
-          Visualize Data
+    <v-row class="text-center">
+      <v-col cols="12" xs="12" md="4">
+        <v-btn
+          large
+          color="warning"
+          class="mt-5"
+          :disabled="flagDisableVisualizeBtn"
+        >
+          <v-icon class="mr-2">mdi-table-large</v-icon>
+          View table
+        </v-btn>
+      </v-col>
+
+      <v-col cols="12" xs="12" md="4">
+        <v-btn
+          large
+          color="success"
+          class="mt-5"
+          :disabled="flagDisableVisualizeBtn"
+        >
+          <v-icon class="mr-2">mdi-chart-bar</v-icon>
+          View chart
+        </v-btn>
+      </v-col>
+
+      <v-col cols="12" xs="12" md="4">
+        <v-btn
+          large
+          color="primary"
+          class="mt-5"
+          :disabled="flagDisableVisualizeBtn"
+        >
+          <v-icon class="mr-2">mdi-chart-pie</v-icon>
+          View Pie
         </v-btn>
       </v-col>
     </v-row>

@@ -1,16 +1,20 @@
 <template>
-  <v-data-table
-    v-model="selected"
-    item-key="co_usuario"
-    show-select
-    class="elevation-1"
-    loading-text="Loading... please wait"
-    :loading="loadingConsultants"
-    :headers="headers"
-    :items="consultants"
-    @input="$root.$emit('select-users', selected)"
-  >
-  </v-data-table>
+  <v-row>
+    <v-col class="offset-1 col-10">
+      <v-data-table
+        v-model="selected"
+        item-key="co_usuario"
+        show-select
+        class="elevation-1"
+        loading-text="Loading... please wait"
+        :loading="loadingConsultants"
+        :headers="headers"
+        :items="consultants"
+        @input="$root.$emit('select-users', selected)"
+      >
+      </v-data-table>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
