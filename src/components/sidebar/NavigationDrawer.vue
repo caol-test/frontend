@@ -1,19 +1,12 @@
 <template>
   <v-navigation-drawer
     dark
-    absolute
+    fixed
     permanent
     expand-on-hover
     :color="$store.getters.getThemeColor"
   >
-    <v-list-item>
-      <v-list-item-content>
-        <v-list-item-title class="text-h6"> MENU ITEMS </v-list-item-title>
-        <v-list-item-subtitle> subtext </v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-
-    <v-list dense nav>
+    <v-list dense nav class="mt-15">
       <v-list-item v-for="item in links" :key="item.title" :to="item.to" link>
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>

@@ -11,7 +11,17 @@
     <v-row class="text-center">
       <v-col class="mb-4">
         <users-table />
-        <chart />
+
+        <v-btn class="mt-5">
+          <v-icon class="mr-2">mdi-chart-bell-curve-cumulative</v-icon>
+          Visualize Data
+        </v-btn>
+      </v-col>
+    </v-row>
+
+    <v-row class="text-center">
+      <v-col class="mb-4">
+        <chart v-if="graphType === 'chart'" />
       </v-col>
     </v-row>
   </v-container>
@@ -30,6 +40,7 @@ export default {
     settingsDrawerMini: true,
     startMonth: null,
     endMonth: null,
+    graphType: null,
   }),
   components: { UsersTable, Chart, SettingsNavDrawer },
   methods: {

@@ -1,5 +1,12 @@
 <template>
-  <v-app-bar app :color="$store.getters.getThemeColor" dark class="elevation-0">
+  <v-app-bar
+    app
+    :color="$store.getters.getThemeColor"
+    dark
+    class="elevation-0"
+    fixed
+    style="z-index: 99999"
+  >
     <div class="d-flex align-center">
       <v-img
         alt="Vuetify Logo"

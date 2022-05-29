@@ -1,16 +1,16 @@
 <template>
   <v-navigation-drawer
     dark
-    absolute
+    fixed
     permanent
     right
     v-model="settingsDrawer"
     :color="$store.getters.getThemeColor"
     :mini-variant.sync="settingsDrawerMini"
   >
-    <v-list-item class="px-2">
+    <v-list-item class="px-2 mt-15">
       <v-list-item-avatar>
-        <v-icon class="mr-2">mdi-cog</v-icon>
+        <v-icon>mdi-cog</v-icon>
       </v-list-item-avatar>
 
       <v-list-item-title>Settings</v-list-item-title>
