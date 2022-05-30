@@ -34,7 +34,9 @@ export default {
   },
   methods: {
     async getJwt() {
-      let response = await this.$axios({ url: "/jwt" });
+      let response = await this.$axios({
+        url: `${process.env.VUE_APP_BASE_URL}/jwt`,
+      });
       let responseData = this.$axios.getResponseData(response);
 
       this.$store.commit("setJwt", responseData.jwt);
@@ -42,7 +44,7 @@ export default {
     async loadConsultants() {
       await this.getJwt();
 
-      this.$axios({ url: "/users/consultants" })
+      this.$axios({ url: `${process.env.VUE_APP_BASE_URL}/users/consultants` })
         .then((response) => {
           this.loadingConsultants = false;
           this.consultants = this.$axios.getResponseData(response);
