@@ -34,6 +34,7 @@
           color="success"
           class="mt-5"
           :disabled="flagDisableVisualizeBtn"
+          @click="showChart()"
         >
           <v-icon class="mr-2">mdi-chart-bar</v-icon>
           View chart
@@ -55,9 +56,15 @@
 
     <v-row justify="center">
       <v-col>
-        <graph-chart v-if="graphType === 'chart'" />
-        <div v-else-if="graphType === 'pie'" />
-        <graph-table :items="earnings" v-else />
+        <graph-chart
+          v-show="graphType === 'chart'"
+          ref="graphChart"
+          :chart-series="chartSeries"
+        />
+
+        <div v-show="graphType === 'pie'" />
+
+        <graph-table v-show="graphType === 'table'" :items="earnings" />
       </v-col>
     </v-row>
   </v-container>
@@ -81,6 +88,8 @@ export default {
     graphType: null,
     selectedUsers: [],
     earnings: [],
+    chartSeries: [],
+    chartXAxis: [],
   }),
   components: { UsersTable, GraphChart, GraphTable, SettingsNavDrawer },
   methods: {
@@ -92,9 +101,17 @@ export default {
       }
     },
     async showTable() {
+      this.dialog = false;
       await this.fetchEarnings();
 
       this.graphType = "table";
+      this.dialog = true;
+    },
+    async showChart() {
+      this.dialog = false;
+      await this.fetchMonthlyCosts();
+
+      this.graphType = "chart";
       this.dialog = true;
     },
     async fetchEarnings() {
@@ -111,6 +128,25 @@ export default {
 
       let responseData = this.$axios.getResponseData(response);
       this.earnings = responseData.earnings;
+    },
+    async fetchMonthlyCosts() {
+      let selectedUsersIds = this.getSelectedConsultantsIds();
+
+      let response = await this.$axios({
+        url: "earnings/fixed-cost-avg",
+        params: {
+          consultants: selectedUsersIds,
+          from: this.startMonth,
+          to: this.endMonth,
+        },
+      });
+
+      let responseData = this.$axios.getResponseData(response);
+
+      this.chartSeries = responseData.series;
+      this.chartXAxis = responseData.x_axis;
+
+      this.$refs.graphChart.setChartOptions(this.chartXAxis);
     },
     getSelectedConsultantsIds() {
       return this.selectedUsers.map((user) => user.co_usuario);
@@ -134,7 +170,6 @@ export default {
 
     this.$root.$on("select-users", (data) => {
       this.selectedUsers = data;
-      console.log(data);
     });
   },
 };
