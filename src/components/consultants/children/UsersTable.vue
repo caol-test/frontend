@@ -47,11 +47,9 @@ export default {
           this.loadingConsultants = false;
           this.consultants = this.$axios.getResponseData(response);
         })
-        .catch((error) => {
+        .catch(() => {
           this.loadingConsultants = false;
           this.consultants = [];
-
-          console.log(error);
         });
     },
   },
