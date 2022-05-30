@@ -139,7 +139,7 @@ export default {
       let selectedUsersIds = this.getSelectedConsultantsIds();
 
       let response = await this.$axios({
-        url: "earnings",
+        url: "/earnings",
         params: {
           consultants: selectedUsersIds,
           from: this.startMonth,
@@ -154,7 +154,7 @@ export default {
       let selectedUsersIds = this.getSelectedConsultantsIds();
 
       let response = await this.$axios({
-        url: "earnings/fixed-cost-avg",
+        url: "/earnings/fixed-cost-avg",
         params: {
           consultants: selectedUsersIds,
           from: this.startMonth,
@@ -173,7 +173,7 @@ export default {
       let selectedUsersIds = this.getSelectedConsultantsIds();
 
       let response = await this.$axios({
-        url: "earnings/percent",
+        url: "/earnings/percent",
         params: {
           consultants: selectedUsersIds,
           from: this.startMonth,
