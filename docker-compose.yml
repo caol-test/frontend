@@ -9,7 +9,7 @@ services:
     container_name: caol-frontend
     restart: always
     networks:
-      - crypto-conv-network
+      - caol-network
 
 networks:
   caol-network:
