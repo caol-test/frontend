@@ -1,12 +1,10 @@
 <template>
-  <div id="chart">
-    <apex-chart
-      type="line"
-      height="350"
-      :options="chartOptions"
-      :series="chartSeries"
-    />
-  </div>
+  <apex-chart
+    type="line"
+    height="350"
+    :options="chartOptions"
+    :series="chartSeries"
+  />
 </template>
 
 <script>
