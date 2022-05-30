@@ -1,6 +1,6 @@
-# caol-frontend
+Frontend app written on top of VueJS and Vuetify
 
-## Project setup
+## Install dependencies
 ```
 npm install
 ```
