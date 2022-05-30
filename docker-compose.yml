@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+
+  caol-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: caol-frontend
+    restart: always
+    networks:
+      - crypto-conv-network
+
+networks:
+  caol-network:
+    external: true
