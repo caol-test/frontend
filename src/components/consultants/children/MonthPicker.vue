@@ -17,7 +17,15 @@
         v-on="on"
       ></v-text-field>
     </template>
-    <v-date-picker v-model="date" no-title scrollable type="month">
+    <v-date-picker
+      v-model="date"
+      no-title
+      scrollable
+      type="month"
+      min="2007-01"
+      max="2007-12"
+      show-current="2007-01"
+    >
       <v-spacer></v-spacer>
       <v-btn text color="primary" @click="menu = false"> Cancel </v-btn>
       <v-btn text color="primary" @click="emitSelectedDateEvent()"> OK </v-btn>
@@ -31,9 +39,7 @@ export default {
 
   data: () => ({
     menu: false,
-    date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-      .toISOString()
-      .substr(0, 7),
+    date: null,
   }),
   props: ["label", "dateType"],
   methods: {
