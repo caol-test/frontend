@@ -21,6 +21,7 @@
           color="warning"
           class="mt-5"
           :disabled="flagDisableVisualizeBtn"
+          @click="showTable()"
         >
           <v-icon class="mr-2">mdi-table-large</v-icon>
           View table
@@ -52,9 +53,11 @@
       </v-col>
     </v-row>
 
-    <v-row class="text-center">
-      <v-col class="mb-4">
-        <chart v-if="graphType === 'chart'" />
+    <v-row justify="center">
+      <v-col>
+        <graph-chart v-if="graphType === 'chart'" />
+        <div v-else-if="graphType === 'pie'" />
+        <graph-table :items="earnings" v-else />
       </v-col>
     </v-row>
   </v-container>
@@ -62,7 +65,8 @@
 
 <script>
 import UsersTable from "@/components/consultants/children/UsersTable";
-import Chart from "@/components/charts/GraphChart";
+import GraphChart from "@/components/charts/GraphChart";
+import GraphTable from "@/components/charts/GraphTable";
 import SettingsNavDrawer from "@/components/consultants/children/SettingsNavDrawer";
 
 export default {
@@ -71,12 +75,14 @@ export default {
   data: () => ({
     settingsDrawer: true,
     settingsDrawerMini: true,
-    startMonth: null,
-    endMonth: null,
+    dialog: false,
+    startMonth: "2007-01",
+    endMonth: "2007-12",
     graphType: null,
     selectedUsers: [],
+    earnings: [],
   }),
-  components: { UsersTable, Chart, SettingsNavDrawer },
+  components: { UsersTable, GraphChart, GraphTable, SettingsNavDrawer },
   methods: {
     setMonth(dateType, value) {
       if (dateType === "start") {
@@ -84,6 +90,30 @@ export default {
       } else {
         this.endMonth = value;
       }
+    },
+    async showTable() {
+      await this.fetchEarnings();
+
+      this.graphType = "table";
+      this.dialog = true;
+    },
+    async fetchEarnings() {
+      let selectedUsersIds = this.getSelectedConsultantsIds();
+
+      let response = await this.$axios({
+        url: "earnings",
+        params: {
+          consultants: selectedUsersIds,
+          from: this.startMonth,
+          to: this.endMonth,
+        },
+      });
+
+      let responseData = this.$axios.getResponseData(response);
+      this.earnings = responseData.earnings;
+    },
+    getSelectedConsultantsIds() {
+      return this.selectedUsers.map((user) => user.co_usuario);
     },
   },
   computed: {
