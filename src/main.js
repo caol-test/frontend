@@ -8,7 +8,7 @@ import axios from "axios";
 Vue.config.productionTip = false;
 
 const axiosConfig = {
-  baseURL: process.env.VUE_BASE_URL,
+  baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 30000,
 };
 
